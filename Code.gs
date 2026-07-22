@@ -23,7 +23,7 @@
 // Cara ambil ID: buka spreadsheet → lihat URL:
 //   https://docs.google.com/spreadsheets/d/SPREADSHEET_ID/edit
 //                                          ^^^^^^^^^^^^^^^^
-const SPREADSHEET_ID = 'GANTI_DENGAN_ID_SPREADSHEET_ANDA';
+const SPREADSHEET_ID = '1bJRF9r6yKFPLmQcrHNld78JBwLSYU-ENv9ICLmwURw0';
 const SHEET_NAME     = 'Sheet1'; // Sesuaikan dengan nama sheet Anda
 
 // ── RESPONSE HELPER ──────────────────────────────────────────
