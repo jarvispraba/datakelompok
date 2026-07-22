@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pendaftaran Kelompok KIK</title>
+
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            telkom: {
+              red: '#E30613',
+              'red-dark': '#B8050F',
+              'red-light': '#FF1A27',
+            }
+          },
+          fontFamily: {
+            poppins: ['Poppins', 'sans-serif'],
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.5s ease-in-out',
+            'slide-up': 'slideUp 0.4s ease-out',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            slideUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="font-poppins bg-gray-50 min-h-screen">
+
+  <!-- ===== TOAST NOTIFICATION ===== -->
+  <div id="toast"
+    class="toast hidden fixed top-5 right-5 z-50 flex items-center gap-3 px-5 py-4 rounded-xl shadow-2xl max-w-sm w-[calc(100%-2.5rem)] sm:w-auto">
+    <span id="toast-icon" class="text-xl flex-shrink-0">✓</span>
+    <span id="toast-message" class="text-sm font-medium">Pesan toast</span>
+  </div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="bg-white shadow-sm border-b-4 border-[#E30613] sticky top-0 z-40">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex items-center gap-4">
+      <div class="w-12 h-12 rounded-full bg-[#E30613] flex items-center justify-center shadow-md flex-shrink-0">
+        <span class="text-white font-bold text-lg select-none">T</span>
+      </div>
+      <div>
+        <p class="text-xs text-gray-500 font-medium uppercase tracking-wider">Telkom School</p>
+        <p class="text-sm font-bold text-gray-800 leading-tight">Kegiatan Inovasi Kewirausahaan (KIK)</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="bg-gradient-to-br from-[#E30613] to-red-700 text-white py-12 px-4">
+    <div class="max-w-5xl mx-auto text-center animate-fade-in">
+      <div class="w-20 h-20 rounded-full bg-white mx-auto mb-4 flex items-center justify-center shadow-lg">
+        <span class="text-[#E30613] font-extrabold text-2xl select-none">KIK</span>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-extrabold mb-2 leading-tight">
+        Pendaftaran Kelompok KIK
+      </h1>
+      <p class="text-red-100 text-base md:text-lg font-light max-w-xl mx-auto">
+        Silakan isi data kelompok dengan benar dan lengkap.
+      </p>
+      <div class="flex items-center justify-center gap-2 mt-4">
+        <div class="w-8 h-0.5 bg-red-300 rounded"></div>
+        <div class="w-2 h-2 bg-red-300 rounded-full"></div>
+        <div class="w-8 h-0.5 bg-red-300 rounded"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="max-w-5xl mx-auto px-4 py-8">
+
+    <!-- ===== FORM CARD ===== -->
+    <section id="form-section" class="animate-slide-up">
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden mb-10">
+
+        <!-- Card Header -->
+        <div class="bg-gradient-to-r from-[#E30613] to-red-600 px-6 py-4">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </div>
+            <div>
+              <h2 class="text-white font-semibold text-base">Form Pendaftaran</h2>
+              <p class="text-red-100 text-xs">Lengkapi semua field di bawah ini</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Body -->
+        <form id="registration-form" novalidate class="p-6 md:p-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <!-- Nama Tim -->
+            <div class="form-group md:col-span-2">
+              <label for="nama-tim" class="form-label">
+                Nama Tim <span class="text-[#E30613]">*</span>
+              </label>
+              <input type="text" id="nama-tim" name="namaTim" maxlength="40"
+                placeholder="Masukkan nama tim" class="form-input" autocomplete="off" />
+              <div class="flex justify-between mt-1">
+                <span id="error-nama-tim" class="form-error hidden"></span>
+                <span id="count-nama-tim" class="char-count ml-auto">0/40</span>
+              </div>
+            </div>
+
+            <!-- Anggota 1 -->
+            <div class="form-group">
+              <label for="anggota1" class="form-label">
+                Anggota 1 <span class="text-[#E30613]">*</span>
+              </label>
+              <input type="text" id="anggota1" name="anggota1" maxlength="50"
+                placeholder="Nama anggota pertama" class="form-input" autocomplete="off" />
+              <div class="flex justify-between mt-1">
+                <span id="error-anggota1" class="form-error hidden"></span>
+                <span id="count-anggota1" class="char-count ml-auto">0/50</span>
+              </div>
+            </div>
+
+            <!-- Anggota 2 -->
+            <div class="form-group">
+              <label for="anggota2" class="form-label">
+                Anggota 2 <span class="text-[#E30613]">*</span>
+              </label>
+              <input type="text" id="anggota2" name="anggota2" maxlength="50"
+                placeholder="Nama anggota kedua" class="form-input" autocomplete="off" />
+              <div class="flex justify-between mt-1">
+                <span id="error-anggota2" class="form-error hidden"></span>
+                <span id="count-anggota2" class="char-count ml-auto">0/50</span>
+              </div>
+            </div>
+
+            <!-- Nomor Telepon -->
+            <div class="form-group">
+              <label for="nomor-telepon" class="form-label">
+                Nomor Telepon Anggota 1 <span class="text-[#E30613]">*</span>
+              </label>
+              <input type="tel" id="nomor-telepon" name="nomorTelepon" maxlength="13"
+                placeholder="081234567890" class="form-input" autocomplete="off" />
+              <div class="flex justify-between mt-1">
+                <span id="error-nomor-telepon" class="form-error hidden"></span>
+                <p class="text-xs text-gray-400 ml-auto">Hanya angka, diawali 08</p>
+              </div>
+            </div>
+
+            <!-- Bidang -->
+            <div class="form-group">
+              <label for="bidang" class="form-label">
+                Bidang <span class="text-[#E30613]">*</span>
+              </label>
+              <div class="relative">
+                <select id="bidang" name="bidang" class="form-input appearance-none pr-10 cursor-pointer">
+                  <option value="" disabled selected>-- Pilih bidang --</option>
+                  <option value="Produk">Produk</option>
+                  <option value="Jasa">Jasa</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+                  <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
+              <span id="error-bidang" class="form-error hidden mt-1"></span>
+            </div>
+
+            <!-- Kosen Produk -->
+            <div class="form-group md:col-span-2">
+              <label for="kosen-produk" class="form-label">
+                Kosen Produk/Jasa <span class="text-[#E30613]">*</span>
+              </label>
+              <textarea id="kosen-produk" name="kosenProduk" maxlength="150" rows="3"
+                placeholder="Contoh:&#10;Menjual Brownies&#10;Jasa Desain Poster&#10;Jasa Editing Video"
+                class="form-input resize-none"></textarea>
+              <div class="flex justify-between mt-1">
+                <span id="error-kosen-produk" class="form-error hidden"></span>
+                <span id="count-kosen-produk" class="char-count ml-auto">0/150</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Submit Button -->
+          <div class="mt-8">
+            <button type="submit" id="submit-btn"
+              class="w-full bg-[#E30613] hover:bg-[#B8050F] text-white font-semibold text-base py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-60 disabled:cursor-not-allowed disabled:transform-none">
+              <svg id="submit-spinner" class="hidden w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+              </svg>
+              <span id="submit-text">Daftarkan Kelompok</span>
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </section>
+
+    <!-- ===== DAFTAR KELOMPOK ===== -->
+    <section id="list-section">
+
+      <!-- Section Header -->
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+        <div>
+          <h2 class="text-xl font-bold text-gray-800">Daftar Kelompok</h2>
+          <p class="text-sm text-gray-500">
+            Total: <span id="total-count" class="font-semibold text-[#E30613]">0</span> kelompok terdaftar
+          </p>
+        </div>
+        <div class="relative w-full sm:w-72">
+          <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none"
+            stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <input type="text" id="search-input" placeholder="Cari nama tim..."
+            class="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#E30613] focus:border-transparent bg-white shadow-sm transition-all" />
+        </div>
+      </div>
+
+      <!-- Error State -->
+      <div id="error-card"
+        class="hidden bg-red-50 border border-red-200 rounded-2xl p-6 text-center mb-6 animate-fade-in">
+        <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3">
+          <svg class="w-6 h-6 text-[#E30613]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+        </div>
+        <p class="text-[#E30613] font-semibold">Gagal mengambil data.</p>
+        <p class="text-red-400 text-sm mt-1">Periksa koneksi internet atau coba lagi nanti.</p>
+        <button onclick="loadData()"
+          class="mt-4 px-4 py-2 bg-[#E30613] text-white text-sm rounded-lg hover:bg-[#B8050F] transition-colors">
+          Coba Lagi
+        </button>
+      </div>
+
+      <!-- Empty State -->
+      <div id="empty-card"
+        class="hidden bg-white border border-gray-100 rounded-2xl p-10 text-center shadow-sm animate-fade-in">
+        <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+        </div>
+        <p class="text-gray-600 font-medium">Belum ada kelompok terdaftar.</p>
+        <p class="text-gray-400 text-sm mt-1">Jadilah yang pertama mendaftar!</p>
+      </div>
+
+      <!-- No Results (search) -->
+      <div id="no-results-card"
+        class="hidden bg-white border border-gray-100 rounded-2xl p-8 text-center shadow-sm animate-fade-in">
+        <p class="text-gray-500 font-medium">Tidak ada kelompok yang cocok.</p>
+        <p class="text-gray-400 text-sm mt-1">Coba kata kunci lain.</p>
+      </div>
+
+      <!-- Skeleton Loader -->
+      <div id="skeleton-loader" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+
+      <!-- Card Grid -->
+      <div id="card-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-white border-t border-gray-100 mt-16 py-6">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <p class="text-sm text-gray-400">
+        © 2025 <span class="font-semibold text-gray-600">Telkom School</span> · Pendaftaran Kelompok KIK
+      </p>
+    </div>
+  </footer>
+
+  <!-- Custom JS -->
+  <script src="script.js"></script>
+</body>
+</html>
